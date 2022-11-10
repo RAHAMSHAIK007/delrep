@@ -1,12 +1,12 @@
-module "my_instance_module" {
-        source = "./modules/instance"
-        ami = "ami-0d593311db5abb72b"
-        instance_type = "t2.micro"
-        instance_name = "rahamisnatnce"
+provider "aws" {
+  region = "ap-south-1"
 }
 
-module "s3_module" {
-source = "./modules/buckets"
-bucket_name = "rahambk0099"
+resource "aws_instance" "example" {
+  ami           = "ami-0d593311db5abb72b"
+  instance_type = var.instance_type
+  tags= {
+    Name = "raham"
+  }
 }
 
